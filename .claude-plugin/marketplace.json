@@ -1,0 +1,14 @@
+{
+  "name": "mnc-agent-skills",
+  "description": "سوق مهارات وكلاء المركز الوطني للمناهج - إدارة التميز المؤسسي",
+  "owner": {
+    "name": "إدارة التميز المؤسسي - المركز الوطني للمناهج"
+  },
+  "plugins": [
+    {
+      "name": "mnc-arabic-writing-standards",
+      "source": "./plugins/mnc-arabic-writing-standards",
+      "description": "معايير الصياغة اللغوية والإملائية والتحرير العربي السليم لوكلاء المركز الذكيين"
+    }
+  ]
+}
