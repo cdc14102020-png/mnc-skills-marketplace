@@ -1,64 +1,56 @@
-# mnc-skills-marketplace
+# سوق مهارات المركز الوطني للمناهج
 
-مستودع "سوق مهارات" (marketplace) للمركز الوطني للمناهج — نقطة توزيع مركزية على GitHub للمهارات المخصصة لوكلاء Claude Code، بحيث يضيف كل عضو في الفريق المستودع مرة واحدة، ثم تصله التحديثات لاحقًا تلقائيًا دون إرسال ملفات يدويًا.
+مستودع سوق (marketplace) لمهارات وكلاء Claude Code في المركز الوطني للمناهج، إدارة التميز المؤسسي. يضيفه كل عضو في الفريق مرة واحدة، وتصله التحديثات بعد ذلك دون إرسال أي ملف.
 
-يحتوي حاليًا على حزمة واحدة: **mnc-arabic-writing-standards** (معايير الصياغة اللغوية والإملائية والتحرير العربي السليم).
+## الحزم المتاحة
 
-## خطوة أولى (لك فقط، قبل مشاركة الرابط)
+| الحزمة | الوصف | أمر التثبيت |
+|---|---|---|
+| mnc-sibawayh-arabic-rules | مهارة سيبويه: المرجع اللغوي المعتمد من خبير اللغة العربية لضبط الإملاء والتحرير والأسلوب | `/plugin install mnc-sibawayh-arabic-rules@mnc-agent-skills` |
 
-بعد إنشاء مستودع فعلي على GitHub تحت حساب/منظمة المركز، ارفعي محتوى هذا المجلد كما هو:
+## التثبيت (مرة واحدة لكل عضو)
 
-```bash
-git init
-git add .
-git commit -m "إضافة سوق مهارات المركز: معايير الصياغة والتحرير العربي"
-git branch -M main
-git remote add origin https://github.com/cdc14102020-png/mnc-skills-marketplace.git
-git push -u origin main
-```
-
-الرابط والاسم أعلاه مضبوطان مسبقًا على حساب `cdc14102020-png` ومستودع `mnc-skills-marketplace`. **ملاحظة مهمة**: لكي يعمل أمر الإضافة المختصر أدناه (`owner/repo`)، يجب أن يكون المستودع عامًا (Public) على GitHub — إن غيّرتِه لاحقًا إلى خاص، أخبريني لنستخدم أسلوب رابط بديل.
-
-## خطوة ثانية (يرسلها كل عضو بالفريق — مرة واحدة فقط، بحسابه الخاص)
-
-كل عضو في الفريق يفتح Claude Code (سواء من الطرفية أو أي واجهة تُشغّله) ويكتب هذين الأمرين مرة واحدة فقط:
+يكتب العضو هذين الأمرين في Claude Code:
 
 ```
 /plugin marketplace add cdc14102020-png/mnc-skills-marketplace
-/plugin install mnc-arabic-writing-standards@mnc-agent-skills
+/plugin install mnc-sibawayh-arabic-rules@mnc-agent-skills
 ```
 
-بعد هذه الخطوة، أصبحت المهارة مثبتة عنده ومتاحة تلقائيًا لوكيله كلما احتاجها — بشكل مستقل تمامًا عن حسابك أو حسابات بقية الفريق.
+يجب أن يبقى المستودع عامًا (Public) ليعمل الأمر الأول بهذه الصيغة المختصرة.
 
-## عندما تُحدَّثين المهارة لاحقًا
+## التحديث
 
-1. عدّلي الملفات داخل `plugins/mnc-arabic-writing-standards/skills/mnc-arabic-writing-standards/`.
-2. ارفعي التعديل بأمر عادي: `git add . && git commit -m "وصف التعديل" && git push`.
-3. عند كل فرد بالفريق، Claude Code يتحقق من التحديثات تلقائيًا؛ ومن أراد تحديثًا فوريًا بدل انتظار الفحص التلقائي، يكتب:
+1. تُعدَّل ملفات المهارة داخل `plugins/mnc-sibawayh-arabic-rules/skills/mnc-sibawayh-arabic-rules/`.
+2. يُرفع رقم الإصدار في `plugins/mnc-sibawayh-arabic-rules/.claude-plugin/plugin.json`، ليلتقط الأعضاء التحديث.
+3. يُرفع التعديل إلى المستودع (Commit ثم Push).
+4. يكتب العضو الأمر التالي للحصول على التحديث فورًا:
 
 ```
 /plugin marketplace update
 ```
-
-لا حاجة لإعادة إرسال أي ملف أو تكرار خطوة التثبيت — التحديث يصل من نفس الرابط الذي أضافوه أول مرة.
 
 ## بنية المستودع
 
 ```
 mnc-skills-marketplace/
 ├── .claude-plugin/
-│   └── marketplace.json                  # فهرس السوق: يشير إلى الحزمة أدناه
+│   └── marketplace.json            # فهرس السوق
 ├── plugins/
-│   └── mnc-arabic-writing-standards/
+│   └── mnc-sibawayh-arabic-rules/
 │       ├── .claude-plugin/
-│       │   └── plugin.json               # بطاقة تعريف الحزمة (الاسم، الإصدار، الوصف)
+│       │   └── plugin.json         # بطاقة الحزمة: الاسم والإصدار والوصف
 │       └── skills/
-│           └── mnc-arabic-writing-standards/
+│           └── mnc-sibawayh-arabic-rules/
 │               ├── SKILL.md
 │               └── references/
-├── README.md                              # هذا الملف
+└── README.md
 ```
 
-## إضافة مهارات مستقبلية لنفس السوق
+## إضافة مهارات جديدة
 
-كل مهارة جديدة تُضاف كحزمة مستقلة تحت `plugins/<اسم-الحزمة>/`، مع تسجيلها في `.claude-plugin/marketplace.json` ضمن مصفوفة `plugins`. لا حاجة لإنشاء مستودع GitHub جديد لكل مهارة — مستودع واحد يكفي لعدة حزم.
+تُضاف كل مهارة جديدة حزمةً مستقلة تحت `plugins/<اسم-الحزمة>/`، وتُسجَّل في مصفوفة `plugins` داخل `.claude-plugin/marketplace.json`. يكفي مستودع واحد لعدة حزم.
+
+## ملاحظة
+
+مستخدمو Cowork وClaude على الويب يحصلون على مهارات المركز من مكتبة مهارات المنظمة، ويرفعها مدير النظام من لوحة الإدارة. هذا المستودع مخصص لمستخدمي Claude Code.
