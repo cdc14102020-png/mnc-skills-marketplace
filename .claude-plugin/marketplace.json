@@ -9,6 +9,11 @@
       "name": "mnc-arabic-writing-standards",
       "source": "./plugins/mnc-arabic-writing-standards",
       "description": "معايير الصياغة اللغوية والإملائية والتحرير العربي السليم لوكلاء المركز الذكيين"
+    },
+    {
+      "name": "mnc-sibawayh-arabic-rules",
+      "source": "./plugins/mnc-sibawayh-arabic-rules",
+      "description": "مهارة سيبويه: المرجع اللغوي المعتمد من خبير اللغة العربية لوكلاء المركز الذكيين"
     }
   ]
 }
